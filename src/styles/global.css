@@ -20,3 +20,60 @@ html {
   outline: 2px solid rgba(255,255,255,0.65);
   outline-offset: 3px;
 }
+
+/* Minimal markdown styling (keeps deps light; no typography plugin needed) */
+.rr-markdown {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.rr-markdown h2,
+.rr-markdown h3,
+.rr-markdown h4 {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.rr-markdown p {
+  margin: 0.75rem 0;
+}
+
+.rr-markdown a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rr-markdown ul {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+}
+
+.rr-markdown li {
+  margin: 0.35rem 0;
+}
+
+.rr-markdown code {
+  font-size: 0.9em;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.5rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.rr-markdown pre {
+  overflow-x: auto;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.rr-markdown pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}

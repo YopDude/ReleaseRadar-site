@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, getEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("docs");
+  return entries.map((e) => ({ params: { slug: e.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry("docs", slug!);
+if (!entry) throw new Error(`Doc not found: ${slug}`);
+
+const { Content } = await entry.render();
+
+const base = import.meta.env.BASE_URL;
+const entries = await getCollection("docs");
+const ordered = entries.slice().sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+const currentIndex = ordered.findIndex((e) => e.slug === entry.slug);
+const prev = currentIndex > 0 ? ordered[currentIndex - 1] : null;
+const next = currentIndex >= 0 && currentIndex < ordered.length - 1 ? ordered[currentIndex + 1] : null;
+---
+
+<BaseLayout title={`${entry.data.title} — Docs — ReleaseRadar`}>
+  <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <a class="text-sm text-white/55 hover:text-white" href={`${base}docs`}>← Docs</a>
+        <h1 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">{entry.data.title}</h1>
+        {entry.data.description && (
+          <p class="mt-3 max-w-2xl text-white/65 leading-relaxed">{entry.data.description}</p>
+        )}
+      </div>
+    </div>
+
+    <article class="rr-markdown mt-10 rounded-3xl border border-white/10 bg-black/25 p-6 ring-1 ring-white/10">
+      <Content />
+    </article>
+
+    <div class="mt-12 grid gap-4 md:grid-cols-2">
+      {prev ? (
+        <a class="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10" href={`${base}docs/${prev.slug}`}>
+          <div class="text-xs text-white/50">Previous</div>
+          <div class="mt-1 text-sm font-semibold">{prev.data.title}</div>
+        </a>
+      ) : (
+        <div />
+      )}
+
+      {next ? (
+        <a class="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10" href={`${base}docs/${next.slug}`}>
+          <div class="text-xs text-white/50">Next</div>
+          <div class="mt-1 text-sm font-semibold">{next.data.title}</div>
+        </a>
+      ) : (
+        <div />
+      )}
+    </div>
+  </section>
+</BaseLayout>

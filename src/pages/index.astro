@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero";
 import SectionReveal from "../components/SectionReveal";
-import StickyStory from "../components/StickyStory";
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -14,8 +13,6 @@ const base = import.meta.env.BASE_URL;
   <div class="relative">
     <Hero client:load />
   </div>
-
-  <StickyStory client:load baseUrl={base} />
 
   <SectionReveal client:visible className="mx-auto max-w-6xl px-5 py-20" id="how">
     <div class="grid gap-10 md:grid-cols-2 md:items-start">
