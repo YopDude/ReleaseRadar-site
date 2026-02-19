@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global polish */
+html {
+  scroll-behavior: smooth;
+}
+
+/* A tiny bit of "premium" texture without going full noise PNG. */
+.rr-noise {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(120,119,198,0.18), transparent 40%),
+    radial-gradient(circle at 30% 85%, rgba(16,185,129,0.10), transparent 45%);
+}
+
+/* Better focus outlines */
+:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: 3px;
+}

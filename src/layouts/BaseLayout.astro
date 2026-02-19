@@ -1,0 +1,96 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "ReleaseRadar",
+  description = "Track what actually matters — across anime, manga, movies, sports, and custom sources.",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+
+const nav = [
+  { label: "Home", href: `${base}` },
+  { label: "Downloads", href: `${base}downloads` },
+  { label: "Docs", href: `${base}docs` },
+  { label: "Patch notes", href: `${base}patch-notes` },
+  { label: "About", href: `${base}about` },
+];
+---
+
+<!doctype html>
+<html lang="en" class="bg-neutral-950 text-neutral-100">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+
+  <body class="min-h-screen rr-noise">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+        <a href={base} class="group flex items-center gap-2">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
+            <span class="text-xs font-semibold">RR</span>
+          </span>
+          <span class="text-sm font-semibold tracking-wide">ReleaseRadar</span>
+          <span class="ml-2 hidden rounded-full bg-white/10 px-2 py-0.5 text-[11px] text-white/70 ring-1 ring-white/10 md:inline">
+            Desktop
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-6 md:flex">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm text-white/70 transition hover:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a
+            href={`${base}downloads`}
+            class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90"
+          >
+            Download
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-5 py-10">
+        <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div>
+            <div class="text-sm font-semibold">ReleaseRadar</div>
+            <div class="mt-1 text-sm text-white/60">
+              Free desktop app. No subscriptions.
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
+            <a class="hover:text-white" href={`${base}downloads`}>Downloads</a>
+            <a class="hover:text-white" href={`${base}docs`}>Docs</a>
+            <a class="hover:text-white" href={`${base}patch-notes`}>Patch notes</a>
+            <a class="hover:text-white" href={`${base}about`}>About</a>
+            <a class="hover:text-white" href={`${base}contact`}>Contact</a>
+          </div>
+        </div>
+
+        <div class="mt-8 text-xs text-white/40">
+          © {new Date().getFullYear()} ReleaseRadar
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

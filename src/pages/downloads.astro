@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const downloads = [
+  {
+    os: "Windows",
+    status: "Placeholder",
+    details: ".exe installer (or .zip portable)",
+  },
+  {
+    os: "macOS",
+    status: "Placeholder",
+    details: ".dmg (Apple Silicon + Intel if needed)",
+  },
+  {
+    os: "Linux",
+    status: "Placeholder",
+    details: ".AppImage (recommended) + .deb (optional)",
+  },
+];
+---
+
+<BaseLayout title="Downloads — ReleaseRadar">
+  <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight md:text-5xl">Download ReleaseRadar</h1>
+    <p class="mt-4 max-w-2xl text-white/65 leading-relaxed">
+      Desktop app for Windows, macOS, and Linux. Free to use.
+      <br />
+      No subscriptions. No accounts required.
+    </p>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      {downloads.map((d) => (
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-sm font-semibold">{d.os}</div>
+              <div class="mt-1 text-xs text-white/55">{d.details}</div>
+            </div>
+            <span class="rounded-full bg-white/10 px-2 py-0.5 text-[11px] text-white/70 ring-1 ring-white/10">
+              {d.status}
+            </span>
+          </div>
+
+          <div class="mt-6 grid gap-2">
+            <button
+              disabled
+              class="inline-flex w-full items-center justify-center rounded-2xl bg-white/20 px-4 py-3 text-sm font-semibold text-white/60"
+              title="Hook this up to your release asset later"
+            >
+              Download
+            </button>
+            <div class="rounded-2xl bg-black/25 p-4 ring-1 ring-white/10">
+              <div class="text-[11px] text-white/55">Later, add:</div>
+              <ul class="mt-2 space-y-1 text-xs text-white/65">
+                <li>• Version number</li>
+                <li>• SHA256 checksum</li>
+                <li>• Link to patch notes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 rounded-3xl border border-white/10 bg-white/5 p-8">
+      <h2 class="text-2xl font-semibold">Install notes</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl bg-black/25 p-5 ring-1 ring-white/10">
+          <div class="text-sm font-semibold">Windows</div>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            Use the installer (recommended) or the portable zip.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-black/25 p-5 ring-1 ring-white/10">
+          <div class="text-sm font-semibold">macOS</div>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            Open the .dmg and drag ReleaseRadar into Applications.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-black/25 p-5 ring-1 ring-white/10">
+          <div class="text-sm font-semibold">Linux</div>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            AppImage is the easiest path. Make it executable and run.
+          </p>
+          <pre class="mt-3 overflow-x-auto rounded-xl bg-black/40 p-3 text-xs text-white/70 ring-1 ring-white/10"><code>chmod +x ReleaseRadar.AppImage
+./ReleaseRadar.AppImage</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-sm text-white/60">
+      Want the setup / config docs? <a class="text-white underline" href={`${base}docs`}>Head to docs</a>.
+    </div>
+  </section>
+</BaseLayout>
