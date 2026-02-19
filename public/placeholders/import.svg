@@ -1,0 +1,52 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0B12"/>
+      <stop offset="0.45" stop-color="#0F1021"/>
+      <stop offset="1" stop-color="#050509"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 210) rotate(25) scale(520 320)">
+      <stop stop-color="#7a77c6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7a77c6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(920 330) rotate(-10) scale(560 360)">
+      <stop stop-color="#1dd3b0" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#1dd3b0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" rx="36" fill="url(#g)"/>
+  <rect width="1200" height="750" rx="36" fill="url(#r)"/>
+  <rect width="1200" height="750" rx="36" fill="url(#r2)"/>
+
+  <g opacity="0.9">
+    <rect x="90" y="90" width="1020" height="570" rx="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+    <rect x="120" y="130" width="240" height="18" rx="9" fill="rgba(255,255,255,0.10)"/>
+    <rect x="120" y="165" width="340" height="32" rx="10" fill="rgba(255,255,255,0.06)"/>
+    <rect x="120" y="220" width="960" height="1" fill="rgba(255,255,255,0.08)"/>
+
+    <rect x="120" y="255" width="480" height="150" rx="22" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.10)"/>
+    <rect x="620" y="255" width="460" height="150" rx="22" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.10)"/>
+
+    <rect x="120" y="425" width="960" height="210" rx="22" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.10)"/>
+    <rect x="150" y="455" width="260" height="16" rx="8" fill="rgba(255,255,255,0.12)"/>
+    <rect x="150" y="485" width="360" height="22" rx="10" fill="rgba(255,255,255,0.06)"/>
+    <rect x="150" y="520" width="760" height="14" rx="7" fill="rgba(255,255,255,0.05)"/>
+    <rect x="150" y="545" width="720" height="14" rx="7" fill="rgba(255,255,255,0.05)"/>
+  </g>
+
+  <g filter="url(#blur)" opacity="0.8">
+    <circle cx="1010" cy="140" r="70" fill="rgba(255,255,255,0.06)"/>
+  </g>
+
+  <text x="120" y="710" fill="rgba(255,255,255,0.55)" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="16">
+    Replace with: add dialog import section expanded + MAL/AniList
+  </text>
+
+  <text x="120" y="205" fill="rgba(255,255,255,0.88)" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="40" font-weight="700">
+    Import (placeholder)
+  </text>
+</svg>
