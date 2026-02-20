@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 
 function baseUrl(path: string) {
   // Works on GitHub Pages project sites because Astro/Vite sets BASE_URL.
-  const base = import.meta.env.BASE_URL || "/";
+  const raw = import.meta.env.BASE_URL || "/";
+  const base = raw.endsWith("/") ? raw : `${raw}/`;
   return `${base}${path.replace(/^\//, "")}`;
 }
 
@@ -25,7 +26,7 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10">
             <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
-            Desktop app — free
+            Desktop app - free
           </div>
 
           <h1 className="mt-6 text-5xl font-semibold tracking-tight md:text-6xl">
@@ -35,9 +36,9 @@ export default function Hero() {
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
             ReleaseRadar monitors updates across anime, manga, movies, TV, sports,
-            and custom sources — without noise.
+            and custom sources - without noise.
             <br />
-            If something changes, you’ll know. If it doesn’t, you won’t be bothered.
+            If something changes, you'll know. If it doesn't, you won't be bothered.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -73,7 +74,7 @@ export default function Hero() {
 
         {/* Right column: animated preview area (placeholder visuals) */}
         <div className="relative z-10">
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 shadow-2xl">
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/12 via-white/8 to-white/5 shadow-2xl">
             <div className="absolute inset-0 opacity-70" />
             <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(120,119,198,0.25),transparent_55%),radial-gradient(circle_at_35%_85%,rgba(16,185,129,0.14),transparent_55%)]" />
             <div className="absolute inset-0 p-5">
@@ -101,7 +102,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-4 text-center text-xs text-white/45">
-            Placeholder visuals — swap with real screenshots later.
+            Placeholder visuals - swap with real screenshots later.
           </div>
         </div>
       </div>

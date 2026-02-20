@@ -2,10 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { downloads } from "../data/downloads";
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 ---
 
-<BaseLayout title="Downloads — ReleaseRadar">
+<BaseLayout title="Downloads - ReleaseRadar">
   <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
     <h1 class="text-4xl font-semibold tracking-tight md:text-5xl">Download ReleaseRadar</h1>
     <p class="mt-4 max-w-2xl text-white/65 leading-relaxed">

@@ -3,11 +3,11 @@ import "../styles/global.css";
 
 const {
   title = "ReleaseRadar",
-  description = "Track what actually matters — across anime, manga, movies, sports, and custom sources.",
+  description = "Track what actually matters - across anime, manga, movies, sports, and custom sources.",
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
-
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 const nav = [
   { label: "Home", href: `${base}` },
   { label: "Downloads", href: `${base}downloads` },

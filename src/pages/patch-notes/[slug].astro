@@ -12,11 +12,12 @@ const entry = await getEntry("patch-notes", slug!);
 if (!entry) throw new Error(`Patch note not found: ${slug}`);
 const { Content } = await entry.render();
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 const fmt = new Intl.DateTimeFormat("en-NZ", { year: "numeric", month: "long", day: "2-digit" });
 ---
 
-<BaseLayout title={`v${entry.data.version} — Patch notes — ReleaseRadar`}>
+<BaseLayout title={`v${entry.data.version} - Patch notes - ReleaseRadar`}>
   <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
     <a class="text-sm text-white/55 hover:text-white" href={`${base}patch-notes`}>← Patch notes</a>
 

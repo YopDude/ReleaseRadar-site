@@ -4,7 +4,8 @@ import Hero from "../components/Hero";
 import SectionReveal from "../components/SectionReveal";
 import StickyStory from "../components/StickyStory";
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 ---
 
 <BaseLayout
@@ -140,7 +141,7 @@ const base = import.meta.env.BASE_URL;
   </SectionReveal>
 
   <SectionReveal client:visible className="mx-auto max-w-6xl px-5 py-20">
-    <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-8 md:p-10">
+    <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/12 via-white/8 to-white/5 p-8 md:p-10">
       <h2 class="text-3xl font-semibold tracking-tight md:text-4xl">
         Not just for shows and sports.
       </h2>

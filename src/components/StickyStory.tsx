@@ -70,8 +70,8 @@ export default function StickyStory(props: { baseUrl: string }) {
           Not static. Not noisy. Just useful.
         </h2>
         <p className="mt-4 max-w-2xl text-white/65 leading-relaxed">
-          Scroll through how ReleaseRadar feels in real use. (Screenshots are placeholders for now —
-          we’ll swap in real UI grabs.)
+          Scroll through how ReleaseRadar feels in real use. (Screenshots are placeholders for now -
+          we'll swap in real UI grabs.)
         </p>
       </div>
 

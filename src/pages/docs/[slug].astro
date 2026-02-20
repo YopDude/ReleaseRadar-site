@@ -13,7 +13,8 @@ if (!entry) throw new Error(`Doc not found: ${slug}`);
 
 const { Content } = await entry.render();
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 const entries = await getCollection("docs");
 const ordered = entries.slice().sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 const currentIndex = ordered.findIndex((e) => e.slug === entry.slug);
@@ -21,7 +22,7 @@ const prev = currentIndex > 0 ? ordered[currentIndex - 1] : null;
 const next = currentIndex >= 0 && currentIndex < ordered.length - 1 ? ordered[currentIndex + 1] : null;
 ---
 
-<BaseLayout title={`${entry.data.title} — Docs — ReleaseRadar`}>
+<BaseLayout title={`${entry.data.title} - Docs - ReleaseRadar`}>
   <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>

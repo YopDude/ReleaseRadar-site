@@ -2,7 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const base = import.meta.env.BASE_URL;
+const baseRaw = import.meta.env.BASE_URL || '/';
+const base = baseRaw.endsWith('/') ? baseRaw : `${baseRaw}/`;
 const entries = (await getCollection("patch-notes"))
   .slice()
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -10,7 +11,7 @@ const entries = (await getCollection("patch-notes"))
 const fmt = new Intl.DateTimeFormat("en-NZ", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
-<BaseLayout title="Patch notes — ReleaseRadar">
+<BaseLayout title="Patch notes - ReleaseRadar">
   <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
     <h1 class="text-4xl font-semibold tracking-tight md:text-5xl">Patch notes</h1>
     <p class="mt-4 max-w-2xl text-white/65 leading-relaxed">What changed, when it changed.</p>
