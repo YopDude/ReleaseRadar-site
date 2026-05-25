@@ -1,3 +1,5 @@
+Deployment URL: https://yopdude.github.io/ReleaseRadar-site/
+
 # Astro Starter Kit: Minimal
 
 ```sh
